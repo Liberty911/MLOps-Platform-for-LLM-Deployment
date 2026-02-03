@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mlops-platform
+  labels:
+    name: mlops-platform
+    environment: production
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: model-serving
+  labels:
+    name: model-serving
+    component: inference
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ray-cluster
+  labels:
+    name: ray-cluster
+    component: training
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+  labels:
+    name: monitoring
+    component: observability
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kserve
+  labels:
+    name: kserve
+    component: serverless

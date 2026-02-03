@@ -1,0 +1,38 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: llama2-7b
+  namespace: model-serving
+  annotations:
+    autoscaling.knative.dev/minScale: "1"
+    autoscaling.knative.dev/maxScale: "10"
+    autoscaling.knative.dev/target: "80"
+    sidecar.istio.io/inject: "false"
+spec:
+  predictor:
+    model:
+      modelFormat:
+        name: huggingface
+      runtime: kserve-tritonserver
+      runtimeVersion: 22.12-py3
+      storageUri: s3://mlops-platform-models-916697696148/llama2-7b/
+      resources:
+        requests:
+          cpu: "4"
+          memory: 16Gi
+          nvidia.com/gpu: "1"
+        limits:
+          cpu: "8"
+          memory: 32Gi
+          nvidia.com/gpu: "1"
+      env:
+        - name: HF_MODEL_ID
+          value: meta-llama/Llama-2-7b-chat-hf
+        - name: TRITON_MAX_BATCH_SIZE
+          value: "8"
+        - name: TRITON_GPU_MEMORY_BYTE_SIZE
+          value: "34359738368"
+    minReplicas: 1
+    maxReplicas: 5
+    scaleTarget: 80
+    scaleMetric: cpu
