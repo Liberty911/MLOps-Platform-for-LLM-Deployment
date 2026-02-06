@@ -27,7 +27,7 @@ spec:
           nvidia.com/gpu: "1"
       env:
         - name: HF_MODEL_ID
-          value: meta-llama/Llama-2-7b-chat-hf
+          value: "llama2-7b"
         - name: TRITON_MAX_BATCH_SIZE
           value: "8"
         - name: TRITON_GPU_MEMORY_BYTE_SIZE
@@ -35,4 +35,4 @@ spec:
     minReplicas: 1
     maxReplicas: 5
     scaleTarget: 80
-    scaleMetric: cpu        
+    scaleMetric: cpu
