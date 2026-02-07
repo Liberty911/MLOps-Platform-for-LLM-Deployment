@@ -1,21 +1,22 @@
-SHELL := /usr/bin/env bash
+SHELL := /bin/bash
 .DEFAULT_GOAL := help
+
 TOOLS := platform/tools
 
 help:
-@echo "make bootstrap | fmt | lint | validate | ci"
+	@echo "make bootstrap | fmt | lint | validate | ci"
 
 bootstrap:
-@./$(TOOLS)/bootstrap.sh
+	@$(TOOLS)/bootstrap.sh
 
 fmt:
-@./$(TOOLS)/fmt.sh
+	@$(TOOLS)/fmt.sh
 
 lint:
-@./$(TOOLS)/lint.sh
+	@$(TOOLS)/lint.sh
 
 validate:
-@./$(TOOLS)/validate.sh
+	@$(TOOLS)/validate.sh
 
 ci: fmt lint validate
-@echo "OK"
+	@echo "OK ✅"

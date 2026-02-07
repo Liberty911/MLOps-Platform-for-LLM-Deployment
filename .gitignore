@@ -1,3 +1,4 @@
+# Secrets
 .env
 **/.env
 *.key
@@ -5,9 +6,11 @@
 *api*key*
 *token*
 
+# Terraform
 **/.terraform/
-*.tfstate
-*.tfstate.*
+*.tfstate*
+crash.log
 
+# IDE
 .vscode/
 .idea/
