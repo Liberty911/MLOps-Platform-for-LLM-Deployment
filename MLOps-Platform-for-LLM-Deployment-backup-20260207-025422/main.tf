@@ -1,6 +1,6 @@
 terraform {
   required_version = ">= 1.0.0"
-  
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -16,20 +16,20 @@ provider "aws" {
 
 # Simple configuration that works with existing cluster
 resource "aws_eks_cluster" "mlops_llm_platform" {
-  name     = "mlops-llm-platform"
-  version  = "1.29"  # Current cluster version
-  
+  name    = "mlops-llm-platform"
+  version = "1.29" # Current cluster version
+
   role_arn = aws_iam_role.eks_cluster.arn
-  
+
   vpc_config {
     subnet_ids = [
-      "subnet-008749496bbb35603",  # us-east-1f
-      "subnet-0221df9f57aa0d368",  # us-east-1c
-      "subnet-03e6e13b3bcfee847",  # us-east-1a
+      "subnet-008749496bbb35603", # us-east-1f
+      "subnet-0221df9f57aa0d368", # us-east-1c
+      "subnet-03e6e13b3bcfee847", # us-east-1a
     ]
     endpoint_public_access = true
   }
-  
+
   tags = {
     Project = "MLOps-Platform"
   }
@@ -37,7 +37,7 @@ resource "aws_eks_cluster" "mlops_llm_platform" {
 
 resource "aws_iam_role" "eks_cluster" {
   name = "mlops-llm-platform-cluster"
-  
+
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{

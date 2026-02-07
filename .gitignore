@@ -1,76 +1,13 @@
-# Terraform
-*.tfstate
-*.tfstate.*
-.terraform/
-terraform.tfstate.backup
-*.tfvars
-
-# Kubernetes
-kubeconfig
-*.kubeconfig
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Virtual Environment
 .env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Secrets
-secrets.yaml
+**/.env
 *.key
 *.pem
-*.crt
+*api*key*
+*token*
 
-# Logs
-*.log
-logs/
+**/.terraform/
+*.tfstate
+*.tfstate.*
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Temporary files
-*.tmp
-*.temp
-
-# Model files
-models/
-*.bin
-*.safetensors
-*.pt
-*.pth
-
-# Local overrides
-override.yaml
-local-values.yaml
+.vscode/
+.idea/
