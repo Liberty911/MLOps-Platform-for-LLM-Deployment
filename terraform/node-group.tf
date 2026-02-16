@@ -37,7 +37,7 @@ resource "aws_eks_node_group" "mlops_nodes" {
   cluster_name    = aws_eks_cluster.mlops_llm_platform.name
   node_group_name = "mlops-llm-worker-nodes"
   node_role_arn   = aws_iam_role.eks_nodes.arn
-  subnet_ids      = ["subnet-abc123", "subnet-def456"]  # REPLACE WITH YOUR ACTUAL PRIVATE SUBNET IDs
+  subnet_ids      = ["subnet-abc123", "subnet-def456"] # REPLACE WITH YOUR ACTUAL PRIVATE SUBNET IDs
 
   scaling_config {
     desired_size = 2
