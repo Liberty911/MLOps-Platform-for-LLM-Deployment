@@ -1,0 +1,8 @@
+### CMD: kubectl -n monitoring get svc -o wide
+### TIME: 2026-02-09T10:28:24Z
+NAME                                  TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE    SELECTOR
+grafana                               ClusterIP   10.100.239.116   <none>        80/TCP     2d6h   app.kubernetes.io/instance=grafana,app.kubernetes.io/name=grafana
+prometheus-kube-state-metrics         ClusterIP   10.100.161.115   <none>        8080/TCP   2d7h   app.kubernetes.io/instance=prometheus,app.kubernetes.io/name=kube-state-metrics
+prometheus-prometheus-node-exporter   ClusterIP   10.100.247.232   <none>        9100/TCP   2d7h   app.kubernetes.io/instance=prometheus,app.kubernetes.io/name=prometheus-node-exporter
+prometheus-prometheus-pushgateway     ClusterIP   10.100.249.156   <none>        9091/TCP   2d7h   app.kubernetes.io/instance=prometheus,app.kubernetes.io/name=prometheus-pushgateway
+prometheus-server                     ClusterIP   10.100.240.29    <none>        80/TCP     2d7h   app.kubernetes.io/component=server,app.kubernetes.io/instance=prometheus,app.kubernetes.io/name=prometheus

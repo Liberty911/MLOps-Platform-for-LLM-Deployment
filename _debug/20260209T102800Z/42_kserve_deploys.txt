@@ -1,0 +1,7 @@
+### CMD: kubectl -n kserve get deploy -o wide
+### TIME: 2026-02-09T10:28:51Z
+NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS                IMAGES                                                                    SELECTOR
+kserve-controller-manager              1/1     1            1           13h    manager,kube-rbac-proxy   kserve/kserve-controller:v0.16.0,quay.io/brancz/kube-rbac-proxy:v0.18.0   control-plane=kserve-controller-manager,controller-tools.k8s.io=1.0
+kserve-localmodel-controller-manager   1/1     1            1           13h    manager                   kserve/kserve-localmodel-controller:v0.16.0                               control-plane=kserve-localmodel-controller-manager,controller-tools.k8s.io=1.0
+kserve-storage-initializer             0/1     1            0           129m   storage-initializer       kserve/storage-initializer:v0.16.0                                        app=storage-initializer
+llmisvc-controller-manager             1/1     1            1           13h    manager                   kserve/llmisvc-controller:v0.16.0                                         control-plane=llmisvc-controller-manager,controller-tools.k8s.io=1.0

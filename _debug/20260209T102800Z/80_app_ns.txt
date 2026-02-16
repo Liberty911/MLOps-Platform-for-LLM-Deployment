@@ -1,0 +1,20 @@
+### CMD: kubectl get ns mlops-demo -o yaml
+### TIME: 2026-02-09T10:29:30Z
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Namespace","metadata":{"annotations":{},"name":"mlops-demo"},"spec":{},"status":{}}
+  creationTimestamp: "2026-02-07T03:49:42Z"
+  labels:
+    kubernetes.io/metadata.name: mlops-demo
+    modelmesh-enabled: "true"
+  name: mlops-demo
+  resourceVersion: "1126388"
+  uid: 1e3e6ec9-df89-45fc-821f-1a71f6b95e48
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active

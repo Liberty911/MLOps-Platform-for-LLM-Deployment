@@ -1,0 +1,6 @@
+### CMD: kubectl -n cert-manager get deploy -o wide
+### TIME: 2026-02-09T10:28:39Z
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS                IMAGES                                             SELECTOR
+cert-manager              1/1     1            1           4d1h   cert-manager-controller   quay.io/jetstack/cert-manager-controller:v1.13.1   app.kubernetes.io/component=controller,app.kubernetes.io/instance=cert-manager,app.kubernetes.io/name=cert-manager
+cert-manager-cainjector   1/1     1            1           4d1h   cert-manager-cainjector   quay.io/jetstack/cert-manager-cainjector:v1.13.1   app.kubernetes.io/component=cainjector,app.kubernetes.io/instance=cert-manager,app.kubernetes.io/name=cainjector
+cert-manager-webhook      1/1     1            1           4d1h   cert-manager-webhook      quay.io/jetstack/cert-manager-webhook:v1.13.1      app.kubernetes.io/component=webhook,app.kubernetes.io/instance=cert-manager,app.kubernetes.io/name=webhook

@@ -1,0 +1,16 @@
+### CMD: kubectl get ns -o wide
+### TIME: 2026-02-09T10:28:04Z
+NAME              STATUS   AGE
+cert-manager      Active   4d1h
+default           Active   4d18h
+kserve            Active   13h
+kube-node-lease   Active   4d18h
+kube-public       Active   4d18h
+kube-system       Active   4d18h
+mlops-demo        Active   2d6h
+mlops-platform    Active   4d1h
+model-serving     Active   4d17h
+monitoring        Active   4d17h
+ray-cluster       Active   4d1h
+triton            Active   4d1h
+wandb             Active   4d1h

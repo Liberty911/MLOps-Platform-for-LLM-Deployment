@@ -1,0 +1,7 @@
+### CMD: kubectl -n cert-manager logs deploy/cert-manager-webhook --tail=200 || true
+### TIME: 2026-02-09T10:28:45Z
+W0207 03:20:54.934500       1 client_config.go:618] Neither --kubeconfig nor --master was specified.  Using the inClusterConfig.  This might not work.
+I0207 03:20:54.952598       1 webhook.go:128] "cert-manager/webhook: using dynamic certificate generating using CA stored in Secret resource" secret_namespace="cert-manager" secret_name="cert-manager-webhook-ca"
+I0207 03:20:54.952878       1 server.go:133] "cert-manager: listening for insecure healthz connections" address=":6080"
+I0207 03:20:54.952931       1 server.go:197] "cert-manager: listening for secure connections" address=":10250"
+I0207 03:20:55.969285       1 dynamic_source.go:255] "cert-manager: Updated cert-manager webhook TLS certificate" DNSNames=["cert-manager-webhook","cert-manager-webhook.cert-manager","cert-manager-webhook.cert-manager.svc"]

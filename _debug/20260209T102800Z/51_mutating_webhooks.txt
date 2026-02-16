@@ -1,0 +1,7 @@
+### CMD: kubectl get mutatingwebhookconfigurations -o wide
+### TIME: 2026-02-09T10:29:09Z
+NAME                                 WEBHOOKS   AGE
+cert-manager-webhook                 1          4d1h
+inferenceservice.serving.kserve.io   2          13h
+pod-identity-webhook                 1          4d18h
+vpc-resource-mutating-webhook        1          4d18h

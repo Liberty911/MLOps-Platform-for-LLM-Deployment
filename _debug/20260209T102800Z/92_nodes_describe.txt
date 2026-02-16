@@ -1,0 +1,183 @@
+### CMD: kubectl describe nodes
+### TIME: 2026-02-09T10:29:55Z
+Name:               ip-172-31-46-51.ec2.internal
+Roles:              <none>
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/instance-type=t3.large
+                    beta.kubernetes.io/os=linux
+                    eks.amazonaws.com/capacityType=ON_DEMAND
+                    eks.amazonaws.com/nodegroup=ng-cpu
+                    eks.amazonaws.com/nodegroup-image=ami-0a23644f1ead7eb05
+                    failure-domain.beta.kubernetes.io/region=us-east-1
+                    failure-domain.beta.kubernetes.io/zone=us-east-1d
+                    k8s.io/cloud-provider-aws=48dd5e96366f1bf279bd7e142d96425c
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=ip-172-31-46-51.ec2.internal
+                    kubernetes.io/os=linux
+                    node.kubernetes.io/instance-type=t3.large
+                    topology.kubernetes.io/region=us-east-1
+                    topology.kubernetes.io/zone=us-east-1d
+Annotations:        alpha.kubernetes.io/provided-node-ip: 172.31.46.51
+                    node.alpha.kubernetes.io/ttl: 0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Sat, 07 Feb 2026 04:20:33 +0100
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  ip-172-31-46-51.ec2.internal
+  AcquireTime:     <unset>
+  RenewTime:       Mon, 09 Feb 2026 11:29:49 +0100
+Conditions:
+  Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  MemoryPressure   False   Mon, 09 Feb 2026 11:26:32 +0100   Sat, 07 Feb 2026 04:20:32 +0100   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     False   Mon, 09 Feb 2026 11:26:32 +0100   Sat, 07 Feb 2026 04:20:32 +0100   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure      False   Mon, 09 Feb 2026 11:26:32 +0100   Sat, 07 Feb 2026 04:20:32 +0100   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready            True    Mon, 09 Feb 2026 11:26:32 +0100   Sat, 07 Feb 2026 04:20:50 +0100   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:   172.31.46.51
+  ExternalIP:   34.201.139.73
+  InternalDNS:  ip-172-31-46-51.ec2.internal
+  Hostname:     ip-172-31-46-51.ec2.internal
+  ExternalDNS:  ec2-34-201-139-73.compute-1.amazonaws.com
+Capacity:
+  cpu:                2
+  ephemeral-storage:  20959212Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             8035208Ki
+  pods:               35
+Allocatable:
+  cpu:                1930m
+  ephemeral-storage:  18242267924
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             7277448Ki
+  pods:               35
+System Info:
+  Machine ID:                 ec2f0792704a822f45ce0f4dd2d5c5dd
+  System UUID:                ec2f0792-704a-822f-45ce-0f4dd2d5c5dd
+  Boot ID:                    5a3253ed-1b7d-4a7d-9a32-a7b8f7f8888f
+  Kernel Version:             5.10.245-245.983.amzn2.x86_64
+  OS Image:                   Amazon Linux 2
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://1.7.29
+  Kubelet Version:            v1.29.15-eks-ecaa3a6
+  Kube-Proxy Version:         v1.29.15-eks-ecaa3a6
+ProviderID:                   aws:///us-east-1d/i-0331ee1809e94bdcf
+Non-terminated Pods:          (11 in total)
+  Namespace                   Name                                                 CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                                 ------------  ----------  ---------------  -------------  ---
+  cert-manager                cert-manager-cainjector-65c7bff89d-ckrcl             0 (0%)        0 (0%)      0 (0%)           0 (0%)         4d1h
+  cert-manager                cert-manager-cbcf9668d-bzk68                         0 (0%)        0 (0%)      0 (0%)           0 (0%)         4d1h
+  cert-manager                cert-manager-webhook-594cb9799b-th65c                0 (0%)        0 (0%)      0 (0%)           0 (0%)         4d1h
+  kserve                      llmisvc-controller-manager-56b987cc79-9n888          100m (5%)     100m (5%)   300Mi (4%)       300Mi (4%)     13h
+  kube-system                 aws-node-mx64t                                       50m (2%)      0 (0%)      0 (0%)           0 (0%)         2d7h
+  kube-system                 coredns-54d6f577c6-rbkbb                             100m (5%)     0 (0%)      70Mi (0%)        170Mi (2%)     4d18h
+  kube-system                 coredns-54d6f577c6-wvc6h                             100m (5%)     0 (0%)      70Mi (0%)        170Mi (2%)     4d18h
+  kube-system                 kube-proxy-rzlkr                                     100m (5%)     0 (0%)      0 (0%)           0 (0%)         2d7h
+  kube-system                 metrics-server-845d86dc79-nrfbf                      100m (5%)     0 (0%)      200Mi (2%)       0 (0%)         4d17h
+  monitoring                  kube-prom-stack-kube-prome-admission-create-hjrcq    0 (0%)        0 (0%)      0 (0%)           0 (0%)         2d7h
+  monitoring                  prometheus-prometheus-node-exporter-lj7sb            0 (0%)        0 (0%)      0 (0%)           0 (0%)         2d7h
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests    Limits
+  --------           --------    ------
+  cpu                550m (28%)  100m (5%)
+  memory             640Mi (9%)  640Mi (9%)
+  ephemeral-storage  0 (0%)      0 (0%)
+  hugepages-1Gi      0 (0%)      0 (0%)
+  hugepages-2Mi      0 (0%)      0 (0%)
+Events:              <none>
+
+
+Name:               ip-172-31-88-38.ec2.internal
+Roles:              <none>
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/instance-type=t3.large
+                    beta.kubernetes.io/os=linux
+                    eks.amazonaws.com/capacityType=ON_DEMAND
+                    eks.amazonaws.com/nodegroup=ng-cpu
+                    eks.amazonaws.com/nodegroup-image=ami-0a23644f1ead7eb05
+                    failure-domain.beta.kubernetes.io/region=us-east-1
+                    failure-domain.beta.kubernetes.io/zone=us-east-1b
+                    k8s.io/cloud-provider-aws=48dd5e96366f1bf279bd7e142d96425c
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=ip-172-31-88-38.ec2.internal
+                    kubernetes.io/os=linux
+                    node.kubernetes.io/instance-type=t3.large
+                    topology.kubernetes.io/region=us-east-1
+                    topology.kubernetes.io/zone=us-east-1b
+Annotations:        alpha.kubernetes.io/provided-node-ip: 172.31.88.38
+                    node.alpha.kubernetes.io/ttl: 0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Sat, 07 Feb 2026 04:20:48 +0100
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  ip-172-31-88-38.ec2.internal
+  AcquireTime:     <unset>
+  RenewTime:       Mon, 09 Feb 2026 11:29:54 +0100
+Conditions:
+  Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  MemoryPressure   False   Mon, 09 Feb 2026 11:27:34 +0100   Sat, 07 Feb 2026 04:20:47 +0100   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     False   Mon, 09 Feb 2026 11:27:34 +0100   Sat, 07 Feb 2026 04:20:47 +0100   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure      False   Mon, 09 Feb 2026 11:27:34 +0100   Sat, 07 Feb 2026 04:20:47 +0100   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready            True    Mon, 09 Feb 2026 11:27:34 +0100   Sat, 07 Feb 2026 04:21:04 +0100   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:   172.31.88.38
+  ExternalIP:   52.90.86.171
+  InternalDNS:  ip-172-31-88-38.ec2.internal
+  Hostname:     ip-172-31-88-38.ec2.internal
+  ExternalDNS:  ec2-52-90-86-171.compute-1.amazonaws.com
+Capacity:
+  cpu:                2
+  ephemeral-storage:  20959212Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             8035200Ki
+  pods:               35
+Allocatable:
+  cpu:                1930m
+  ephemeral-storage:  18242267924
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             7277440Ki
+  pods:               35
+System Info:
+  Machine ID:                 ec21890e0d936c86c2f03d1eecbbd138
+  System UUID:                ec21890e-0d93-6c86-c2f0-3d1eecbbd138
+  Boot ID:                    af8b4b59-3b9d-4e03-a4bd-5776c29cb410
+  Kernel Version:             5.10.245-245.983.amzn2.x86_64
+  OS Image:                   Amazon Linux 2
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://1.7.29
+  Kubelet Version:            v1.29.15-eks-ecaa3a6
+  Kube-Proxy Version:         v1.29.15-eks-ecaa3a6
+ProviderID:                   aws:///us-east-1b/i-0263e6043598c788a
+Non-terminated Pods:          (10 in total)
+  Namespace                   Name                                                     CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                                     ------------  ----------  ---------------  -------------  ---
+  kserve                      kserve-controller-manager-7fcb6875cc-vwzbr               100m (5%)     100m (5%)   200Mi (2%)       300Mi (4%)     18m
+  kserve                      kserve-localmodel-controller-manager-6b765cb8c9-twstc    100m (5%)     100m (5%)   200Mi (2%)       300Mi (4%)     13h
+  kserve                      kserve-storage-initializer-b48dc7cff-zr9cx               100m (5%)     100m (5%)   100Mi (1%)       200Mi (2%)     106m
+  kube-system                 aws-node-spwtj                                           50m (2%)      0 (0%)      0 (0%)           0 (0%)         2d7h
+  kube-system                 kube-proxy-k57t6                                         100m (5%)     0 (0%)      0 (0%)           0 (0%)         2d7h
+  monitoring                  grafana-5bb498d685-dd8js                                 0 (0%)        0 (0%)      0 (0%)           0 (0%)         2d7h
+  monitoring                  prometheus-kube-state-metrics-74b688f8ff-pxlnd           0 (0%)        0 (0%)      0 (0%)           0 (0%)         2d7h
+  monitoring                  prometheus-prometheus-node-exporter-cdx8r                0 (0%)        0 (0%)      0 (0%)           0 (0%)         2d7h
+  monitoring                  prometheus-prometheus-pushgateway-c9db77c9-tl5nk         0 (0%)        0 (0%)      0 (0%)           0 (0%)         2d7h
+  monitoring                  prometheus-server-744f6bdbfc-8fgdq                       0 (0%)        0 (0%)      0 (0%)           0 (0%)         2d7h
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests    Limits
+  --------           --------    ------
+  cpu                450m (23%)  300m (15%)
+  memory             500Mi (7%)  800Mi (11%)
+  ephemeral-storage  0 (0%)      0 (0%)
+  hugepages-1Gi      0 (0%)      0 (0%)
+  hugepages-2Mi      0 (0%)      0 (0%)
+Events:              <none>

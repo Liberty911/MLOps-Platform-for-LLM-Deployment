@@ -1,0 +1,49 @@
+### CMD: kubectl -n kserve get cm inferenceservice-config -o yaml
+### TIME: 2026-02-09T10:29:02Z
+apiVersion: v1
+data:
+  credentials: |-
+    {
+      "storageSpecSecretName": "storage-config",
+      "gcs": {
+        "gcsCredentialFileName": "gcloud-application-credentials.json"
+      },
+      "s3": {
+        "s3AccessKeyIDName": "AWS_ACCESS_KEY_ID",
+        "s3SecretAccessKeyName": "AWS_SECRET_ACCESS_KEY"
+      }
+    }
+  deploy: |-
+    {
+      "defaultDeploymentMode": "RawDeployment",
+      "deploymentRolloutStrategy": {
+        "defaultRollout": {
+          "maxSurge": "1",
+          "maxUnavailable": "1"
+        }
+      }
+    }
+  storageInitializer: |-
+    {
+      "image": "kserve/storage-initializer:v0.16.0",
+      "memoryRequest": "100Mi",
+      "memoryLimit": "1Gi",
+      "cpuRequest": "100m",
+      "cpuLimit": "1",
+      "caBundleConfigMapName": "",
+      "caBundleVolumeMountPath": "/etc/ssl/custom-certs",
+      "enableModelcar": false,
+      "cpuModelcar": "10m",
+      "memoryModelcar": "15Mi",
+      "uidModelcar": 1010
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"credentials":"{\n  \"storageSpecSecretName\": \"storage-config\",\n  \"gcs\": {\n    \"gcsCredentialFileName\": \"gcloud-application-credentials.json\"\n  },\n  \"s3\": {\n    \"s3AccessKeyIDName\": \"AWS_ACCESS_KEY_ID\",\n    \"s3SecretAccessKeyName\": \"AWS_SECRET_ACCESS_KEY\"\n  }\n}","deploy":"{\n  \"defaultDeploymentMode\": \"RawDeployment\",\n  \"deploymentRolloutStrategy\": {\n    \"defaultRollout\": {\n      \"maxSurge\": \"1\",\n      \"maxUnavailable\": \"1\"\n    }\n  }\n}","storageInitializer":"{\n  \"image\": \"kserve/storage-initializer:v0.16.0\",\n  \"memoryRequest\": \"100Mi\",\n  \"memoryLimit\": \"1Gi\",\n  \"cpuRequest\": \"100m\",\n  \"cpuLimit\": \"1\",\n  \"caBundleConfigMapName\": \"\",\n  \"caBundleVolumeMountPath\": \"/etc/ssl/custom-certs\",\n  \"enableModelcar\": false,\n  \"cpuModelcar\": \"10m\",\n  \"memoryModelcar\": \"15Mi\",\n  \"uidModelcar\": 1010\n}"},"kind":"ConfigMap","metadata":{"annotations":{},"name":"inferenceservice-config","namespace":"kserve"}}
+  creationTimestamp: "2026-02-08T21:19:13Z"
+  name: inferenceservice-config
+  namespace: kserve
+  resourceVersion: "1135100"
+  uid: f4bddf98-0595-406d-86ec-8a0c7b38bbdd

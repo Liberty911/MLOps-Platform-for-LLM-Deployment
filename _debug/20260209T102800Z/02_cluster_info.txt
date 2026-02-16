@@ -1,0 +1,6 @@
+### CMD: kubectl cluster-info
+### TIME: 2026-02-09T10:28:01Z
+Kubernetes control plane is running at https://530F7914B72041442D8A79E412DB29D6.gr7.us-east-1.eks.amazonaws.com
+CoreDNS is running at https://530F7914B72041442D8A79E412DB29D6.gr7.us-east-1.eks.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.

@@ -1,0 +1,15 @@
+### CMD: kubectl get clusterservingruntime -o wide 2>/dev/null || kubectl get clusterservingruntimes -o wide 2>/dev/null || true
+### TIME: 2026-02-09T10:29:26Z
+NAME                                 DISABLED   MODELTYPE     CONTAINERS         AGE
+kserve-huggingfaceserver                        huggingface   kserve-container   12h
+kserve-huggingfaceserver-multinode              huggingface   kserve-container   12h
+kserve-lgbserver                                lightgbm      kserve-container   12h
+kserve-mlserver                                 sklearn       kserve-container   12h
+kserve-paddleserver                             paddle        kserve-container   12h
+kserve-pmmlserver                               pmml          kserve-container   12h
+kserve-sklearnserver                            sklearn       kserve-container   12h
+kserve-tensorflow-serving                       tensorflow    kserve-container   12h
+kserve-torchserve                               pytorch       kserve-container   12h
+kserve-tritonserver                             tensorrt      kserve-container   12h
+kserve-xgbserver                                xgboost       kserve-container   12h
+sklearn-runtime                                 sklearn       kserve-container   7h33m

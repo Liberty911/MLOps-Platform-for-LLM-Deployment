@@ -1,0 +1,22 @@
+### CMD: kubectl get ns kserve -o yaml
+### TIME: 2026-02-09T10:28:47Z
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Namespace","metadata":{"labels":{"control-plane":"kserve-controller-manager","controller-tools.k8s.io":"1.0","istio-injection":"disabled"},"name":"kserve"}}
+  creationTimestamp: "2026-02-08T21:11:06Z"
+  labels:
+    control-plane: kserve-controller-manager
+    controller-tools.k8s.io: "1.0"
+    istio-injection: disabled
+    kubernetes.io/metadata.name: kserve
+  name: kserve
+  resourceVersion: "973750"
+  uid: c0415037-e60a-415f-80ab-ca7441152c34
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active

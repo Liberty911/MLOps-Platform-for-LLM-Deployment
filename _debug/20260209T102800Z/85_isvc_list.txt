@@ -1,0 +1,4 @@
+### CMD: kubectl -n mlops-demo get isvc -o wide 2>/dev/null || kubectl -n mlops-demo get inferenceservices -o wide 2>/dev/null || true
+### TIME: 2026-02-09T10:29:39Z
+NAME           URL   READY   PREV   LATEST   PREVROLLEDOUTREVISION   LATESTREADYREVISION   AGE
+test-sklearn                                                                               105m

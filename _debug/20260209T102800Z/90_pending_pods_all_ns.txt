@@ -1,0 +1,4 @@
+### CMD: kubectl get pods -A --field-selector=status.phase=Pending -o wide
+### TIME: 2026-02-09T10:29:50Z
+NAMESPACE    NAME                                                READY   STATUS              RESTARTS   AGE    IP       NODE                           NOMINATED NODE   READINESS GATES
+monitoring   kube-prom-stack-kube-prome-admission-create-hjrcq   0/1     ContainerCreating   0          2d7h   <none>   ip-172-31-46-51.ec2.internal   <none>           <none>

@@ -1,0 +1,11 @@
+### CMD: kubectl -n monitoring logs deploy/prometheus-server --tail=300
+### TIME: 2026-02-09T10:28:26Z
+Defaulted container "prometheus-server-configmap-reload" out of: prometheus-server-configmap-reload, prometheus-server
+ts=2026-02-07T03:21:53.546400542Z level=info caller=/workspace/cmd/prometheus-config-reloader/main.go:148 msg="Starting prometheus-config-reloader" version="(version=0.89.0, branch=, revision=e13fb15)" build_context="(go=go1.25.6, platform=linux/amd64, user=, date=20260206-08:24:12, tags=unknown)"
+ts=2026-02-07T03:21:53.547056328Z level=info caller=/workspace/internal/goruntime/cpu.go:27 msg="Leaving GOMAXPROCS=2: CPU quota undefined"
+level=info ts=2026-02-07T03:21:53.547981445Z caller=reloader.go:282 msg="reloading via HTTP"
+level=info ts=2026-02-07T03:21:53.548085853Z caller=reloader.go:328 msg="started watching config file and directories for changes" cfg= cfgDirs= out= dirs=/etc/config
+ts=2026-02-07T03:21:53.548124761Z level=info caller=/workspace/cmd/prometheus-config-reloader/main.go:202 msg="Starting web server for metrics" listen=0.0.0.0:8080
+ts=2026-02-07T03:21:53.548493867Z level=info caller=/go/pkg/mod/github.com/prometheus/exporter-toolkit@v0.15.1/web/tls_config.go:354 msg="Listening on" address=[::]:8080
+ts=2026-02-07T03:21:53.548530694Z level=info caller=/go/pkg/mod/github.com/prometheus/exporter-toolkit@v0.15.1/web/tls_config.go:357 msg="TLS is disabled." http2=false address=[::]:8080
+level=info ts=2026-02-07T03:24:53.555187408Z caller=reloader.go:546 msg="Reload triggered" cfg_in= cfg_out= cfg_dirs= watched_dirs=/etc/config

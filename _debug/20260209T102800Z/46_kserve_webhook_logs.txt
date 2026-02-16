@@ -1,0 +1,2 @@
+### CMD: kubectl -n kserve get pods -o name | grep -i webhook | head -n1 | xargs -r kubectl -n kserve logs --tail=600 || true
+### TIME: 2026-02-09T10:29:00Z

@@ -1,0 +1,3 @@
+### CMD: kubectl config current-context
+### TIME: 2026-02-09T10:28:01Z
+arn:aws:eks:us-east-1:916697696148:cluster/mlops-llm-platform

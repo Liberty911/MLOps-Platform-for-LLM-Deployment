@@ -1,0 +1,7 @@
+### CMD: kubectl -n kube-system logs deploy/coredns --tail=200 || true
+### TIME: 2026-02-09T10:30:00Z
+Found 2 pods, using pod/coredns-54d6f577c6-wvc6h
+.:53
+[INFO] plugin/reload: Running configuration SHA512 = 8a7d59126e7f114ab49c6d2613be93d8ef7d408af8ee61a710210843dc409f03133727e38f64469d9bb180f396c84ebf48a42bde3b3769730865ca9df5eb281c
+CoreDNS-1.11.1
+linux/amd64, go1.21.5, 30db848e

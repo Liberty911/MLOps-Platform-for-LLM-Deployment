@@ -1,0 +1,4 @@
+### CMD: kubectl version --client=true
+### TIME: 2026-02-09T10:28:00Z
+Client Version: v1.34.2
+Kustomize Version: v5.7.1

@@ -1,0 +1,21 @@
+### QUICK FLAGS
+- If kserve namespace is Terminating: delete stuck webhooks/CRDs or remove finalizers; check 50/51/60 outputs.
+- If isvc shows 'ServerlessModeRejected': you are in RawDeployment mode (no Knative). Ensure inferenceservice-config deploy is valid JSON.
+- If admission webhook denies requests: check 46, 50, 51, 47 outputs.
+- If no pods/services created for ISVC: controller logs (45) will show why (missing runtime, invalid storage, webhook, permission).
+
+### CURRENT CONFIG CHECKS
+deploy CM (.data.deploy): {
+  "defaultDeploymentMode": "RawDeployment",
+  "deploymentRolloutStrategy": {
+    "defaultRollout": {
+      "maxSurge": "1",
+      "maxUnavailable": "1"
+    }
+  }
+}
+
+### SUGGESTED ONE-LINERS
+kubectl -n kserve logs deploy/kserve-controller-manager --tail=200
+kubectl -n mlops-demo describe isvc iris-model
+kubectl -n mlops-demo get deploy,po,svc -o wide

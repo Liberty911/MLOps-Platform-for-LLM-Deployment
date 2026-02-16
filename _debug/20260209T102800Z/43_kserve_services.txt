@@ -1,0 +1,8 @@
+### CMD: kubectl -n kserve get svc -o wide
+### TIME: 2026-02-09T10:28:53Z
+NAME                                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+kserve-controller-manager-metrics-service   ClusterIP   10.100.192.163   <none>        8443/TCP   13h   control-plane=kserve-controller-manager,controller-tools.k8s.io=1.0
+kserve-controller-manager-service           ClusterIP   10.100.168.80    <none>        8443/TCP   13h   control-plane=kserve-controller-manager,controller-tools.k8s.io=1.0
+kserve-webhook-server-service               ClusterIP   10.100.8.67      <none>        443/TCP    13h   control-plane=kserve-controller-manager
+llmisvc-controller-manager-service          ClusterIP   10.100.127.71    <none>        8443/TCP   13h   control-plane=llmisvc-controller-manager,controller-tools.k8s.io=1.0
+llmisvc-webhook-server-service              ClusterIP   10.100.249.33    <none>        443/TCP    13h   control-plane=llmisvc-controller-manager

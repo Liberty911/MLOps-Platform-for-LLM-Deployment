@@ -1,0 +1,5 @@
+### CMD: kubectl get nodes -o wide
+### TIME: 2026-02-09T10:28:02Z
+NAME                           STATUS   ROLES    AGE    VERSION                INTERNAL-IP    EXTERNAL-IP     OS-IMAGE         KERNEL-VERSION                  CONTAINER-RUNTIME
+ip-172-31-46-51.ec2.internal   Ready    <none>   2d7h   v1.29.15-eks-ecaa3a6   172.31.46.51   34.201.139.73   Amazon Linux 2   5.10.245-245.983.amzn2.x86_64   containerd://1.7.29
+ip-172-31-88-38.ec2.internal   Ready    <none>   2d7h   v1.29.15-eks-ecaa3a6   172.31.88.38   52.90.86.171    Amazon Linux 2   5.10.245-245.983.amzn2.x86_64   containerd://1.7.29

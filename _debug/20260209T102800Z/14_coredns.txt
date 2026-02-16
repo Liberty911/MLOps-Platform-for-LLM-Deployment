@@ -1,0 +1,53 @@
+### CMD: kubectl -n kube-system describe deploy coredns
+### TIME: 2026-02-09T10:28:19Z
+Name:                   coredns
+Namespace:              kube-system
+CreationTimestamp:      Wed, 04 Feb 2026 17:27:37 +0100
+Labels:                 eks.amazonaws.com/component=coredns
+                        k8s-app=kube-dns
+                        kubernetes.io/name=CoreDNS
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               eks.amazonaws.com/component=coredns,k8s-app=kube-dns
+Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  1 max unavailable, 25% max surge
+Pod Template:
+  Labels:           eks.amazonaws.com/component=coredns
+                    k8s-app=kube-dns
+  Service Account:  coredns
+  Containers:
+   coredns:
+    Image:       602401143452.dkr.ecr.us-east-1.amazonaws.com/eks/coredns:v1.11.1-eksbuild.4
+    Ports:       53/UDP (dns), 53/TCP (dns-tcp), 9153/TCP (metrics)
+    Host Ports:  0/UDP (dns), 0/TCP (dns-tcp), 0/TCP (metrics)
+    Args:
+      -conf
+      /etc/coredns/Corefile
+    Limits:
+      memory:  170Mi
+    Requests:
+      cpu:        100m
+      memory:     70Mi
+    Liveness:     http-get http://:8080/health delay=60s timeout=5s period=10s #success=1 #failure=5
+    Readiness:    http-get http://:8181/ready delay=0s timeout=1s period=10s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:
+      /etc/coredns from config-volume (ro)
+  Volumes:
+   config-volume:
+    Type:               ConfigMap (a volume populated by a ConfigMap)
+    Name:               coredns
+    Optional:           false
+  Priority Class Name:  system-cluster-critical
+  Node-Selectors:       <none>
+  Tolerations:          CriticalAddonsOnly op=Exists
+                        node-role.kubernetes.io/control-plane:NoSchedule
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   coredns-54d6f577c6 (2/2 replicas created)
+Events:          <none>

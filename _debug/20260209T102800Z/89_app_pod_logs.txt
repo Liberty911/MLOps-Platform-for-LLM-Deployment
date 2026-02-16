@@ -1,0 +1,2 @@
+### CMD: for p in $(kubectl -n mlops-demo get pod -o name 2>/dev/null | head -n 10); do echo '--- '"$p"; kubectl -n mlops-demo logs "$p" --all-containers --tail=300; done || true
+### TIME: 2026-02-09T10:29:48Z

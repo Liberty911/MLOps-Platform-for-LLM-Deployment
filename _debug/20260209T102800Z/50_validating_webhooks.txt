@@ -1,0 +1,13 @@
+### CMD: kubectl get validatingwebhookconfigurations -o wide
+### TIME: 2026-02-09T10:29:07Z
+NAME                                          WEBHOOKS   AGE
+cert-manager-webhook                          1          4d1h
+clusterservingruntime.serving.kserve.io       1          13h
+inferencegraph.serving.kserve.io              1          13h
+inferenceservice.serving.kserve.io            1          13h
+llminferenceservice.serving.kserve.io         1          13h
+llminferenceserviceconfig.serving.kserve.io   1          13h
+localmodelcache.serving.kserve.io             1          13h
+servingruntime.serving.kserve.io              1          13h
+trainedmodel.serving.kserve.io                1          13h
+vpc-resource-validating-webhook               2          4d18h

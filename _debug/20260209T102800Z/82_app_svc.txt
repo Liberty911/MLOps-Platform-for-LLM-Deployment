@@ -1,0 +1,3 @@
+### CMD: kubectl -n mlops-demo get svc -o wide
+### TIME: 2026-02-09T10:29:34Z
+No resources found in mlops-demo namespace.

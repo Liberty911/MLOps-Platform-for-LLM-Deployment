@@ -1,0 +1,21 @@
+### CMD: kubectl get events -A --sort-by=.lastTimestamp
+### TIME: 2026-02-09T10:28:14Z
+NAMESPACE    LAST SEEN   TYPE      REASON              OBJECT                                                  MESSAGE
+kserve       16m         Normal    Scheduled           pod/kserve-controller-manager-7fcb6875cc-vwzbr          Successfully assigned kserve/kserve-controller-manager-7fcb6875cc-vwzbr to ip-172-31-88-38.ec2.internal
+kserve       16m         Normal    Created             pod/kserve-controller-manager-7fcb6875cc-vwzbr          Created container: manager
+kserve       16m         Normal    ScalingReplicaSet   deployment/kserve-controller-manager                    Scaled up replica set kserve-controller-manager-7fcb6875cc to 1
+kserve       16m         Normal    SuccessfulCreate    replicaset/kserve-controller-manager-7fcb6875cc         Created pod: kserve-controller-manager-7fcb6875cc-vwzbr
+kserve       16m         Normal    Pulling             pod/kserve-controller-manager-7fcb6875cc-vwzbr          Pulling image "kserve/kserve-controller:v0.16.0"
+kserve       16m         Normal    Pulled              pod/kserve-controller-manager-7fcb6875cc-vwzbr          Successfully pulled image "kserve/kserve-controller:v0.16.0" in 144ms (144ms including waiting)
+kserve       16m         Normal    Pulled              pod/kserve-controller-manager-7fcb6875cc-vwzbr          Container image "quay.io/brancz/kube-rbac-proxy:v0.18.0" already present on machine
+kserve       16m         Normal    Started             pod/kserve-controller-manager-7fcb6875cc-vwzbr          Started container manager
+kserve       16m         Normal    Created             pod/kserve-controller-manager-7fcb6875cc-vwzbr          Created container: kube-rbac-proxy
+kserve       16m         Normal    Started             pod/kserve-controller-manager-7fcb6875cc-vwzbr          Started container kube-rbac-proxy
+kserve       16m         Normal    Killing             pod/kserve-controller-manager-788cfdf94b-99r8c          Stopping container manager
+kserve       16m         Normal    SuccessfulDelete    replicaset/kserve-controller-manager-788cfdf94b         Deleted pod: kserve-controller-manager-788cfdf94b-99r8c
+kserve       16m         Normal    Killing             pod/kserve-controller-manager-788cfdf94b-99r8c          Stopping container kube-rbac-proxy
+kserve       16m         Normal    ScalingReplicaSet   deployment/kserve-controller-manager                    Scaled down replica set kserve-controller-manager-788cfdf94b to 0 from 1
+kserve       16m         Normal    LeaderElection      lease/kserve-controller-manager-leader-lock             kserve-controller-manager-7fcb6875cc-vwzbr_fa3814cd-295a-4d85-a917-5259db1feb79 became leader
+kserve       9m28s       Normal    Pulled              pod/kserve-storage-initializer-b48dc7cff-zr9cx          Container image "kserve/storage-initializer:v0.16.0" already present on machine
+kserve       4m26s       Warning   BackOff             pod/kserve-storage-initializer-b48dc7cff-zr9cx          Back-off restarting failed container storage-initializer in pod kserve-storage-initializer-b48dc7cff-zr9cx_kserve(418a05d2-62fe-4296-aa44-0be51ec46684)
+monitoring   97s         Warning   FailedMount         pod/kube-prom-stack-kube-prome-admission-create-hjrcq   MountVolume.SetUp failed for volume "kube-api-access-7lq5s" : failed to fetch token: serviceaccounts "kube-prom-stack-kube-prome-admission" not found

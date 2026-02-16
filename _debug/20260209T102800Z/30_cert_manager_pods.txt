@@ -1,0 +1,6 @@
+### CMD: kubectl -n cert-manager get pods -o wide
+### TIME: 2026-02-09T10:28:32Z
+NAME                                       READY   STATUS    RESTARTS   AGE    IP              NODE                           NOMINATED NODE   READINESS GATES
+cert-manager-cainjector-65c7bff89d-ckrcl   1/1     Running   0          4d1h   172.31.36.189   ip-172-31-46-51.ec2.internal   <none>           <none>
+cert-manager-cbcf9668d-bzk68               1/1     Running   0          4d1h   172.31.37.161   ip-172-31-46-51.ec2.internal   <none>           <none>
+cert-manager-webhook-594cb9799b-th65c      1/1     Running   0          4d1h   172.31.47.76    ip-172-31-46-51.ec2.internal   <none>           <none>
