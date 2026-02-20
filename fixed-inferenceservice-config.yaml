@@ -1,0 +1,108 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: inferenceservice-config
+  namespace: kserve
+data:
+  deploy: |
+    {
+      "defaultDeploymentMode": "RawDeployment"
+    }
+  explainers: |
+    {
+      "alibi": {
+        "artifactsGcsPrefix": "",
+        "container": {
+          "args": [
+            "--storage_uri",
+            "{{ .ModelUri }}",
+            "--http_port",
+            "8080",
+            "--model_type",
+            "{{.ModelType}}",
+            "--predict_url",
+            "{{.PredictURL}}",
+            "--protocol",
+            "{{.Protocol}}"
+          ],
+          "image": "kserve/alibi-explainer",
+          "name": "explainer"
+        },
+        "defaultImageVersion": "latest"
+      }
+    }
+  loggers: |
+    {
+      "kafka": {
+        "image": "kserve/kafka-logger:v0.16.0",
+        "defaultCpuRequest": "100m",
+        "defaultCpuLimit": "1",
+        "defaultMemoryRequest": "200Mi",
+        "defaultMemoryLimit": "1Gi",
+        "minReplicas": 1,
+        "maxReplicas": 10
+      },
+      "tensorboard": {
+        "image": "kserve/tensorboard-logger:v0.16.0",
+        "defaultCpuRequest": "100m",
+        "defaultCpuLimit": "1",
+        "defaultMemoryRequest": "200Mi",
+        "defaultMemoryLimit": "1Gi"
+      }
+    }
+  model_formats: |
+    {
+      "supported_formats": [
+        {
+          "name": "sklearn",
+          "versions": ["1"]
+        },
+        {
+          "name": "tensorflow",
+          "versions": ["1", "2"]
+        },
+        {
+          "name": "pytorch",
+          "versions": ["1"]
+        },
+        {
+          "name": "onnx",
+          "versions": ["1"]
+        },
+        {
+          "name": "xgboost",
+          "versions": ["1"]
+        },
+        {
+          "name": "lightgbm",
+          "versions": ["3"]
+        },
+        {
+          "name": "pmml",
+          "versions": ["4"]
+        },
+        {
+          "name": "custom",
+          "versions": ["1"]
+        }
+      ],
+      "auto_select": true
+    }
+  storageInitializer: |
+    {
+      "image": "kserve/storage-initializer:v0.16.0",
+      "cpuRequest": "100m",
+      "cpuLimit": "1",
+      "memoryRequest": "100Mi",
+      "memoryLimit": "1Gi"
+    }
+  transformers: |
+    {
+      "feast": {
+        "image": "kserve/feast-transformer:v0.16.0",
+        "defaultCpuRequest": "100m",
+        "defaultCpuLimit": "1",
+        "defaultMemoryRequest": "200Mi",
+        "defaultMemoryLimit": "1Gi"
+      }
+    }

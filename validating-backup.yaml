@@ -1,0 +1,38 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  annotations:
+    cert-manager.io/inject-ca-from: kserve/serving-cert
+  creationTimestamp: "2026-02-16T13:51:30Z"
+  generation: 9
+  name: inferenceservice.serving.kserve.io
+  resourceVersion: "4936273"
+  uid: 4302a3c6-e449-4330-86e7-a2ae05b3d98b
+webhooks:
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURSakNDQWk2Z0F3SUJBZ0lSQU5jeUZIUThocFB1TW9pU1Fhb3QrRHN3RFFZSktvWklodmNOQVFFTEJRQXcKTXpFeE1DOEdBMVVFQXhNb2EzTmxjblpsTFhkbFltaHZiMnN0YzJWeWRtVnlMWE5sY25acFkyVXVhM05sY25abApMbk4yWXpBZUZ3MHlOakF5TURneU1URTVNemhhRncweU5qQTFNRGt5TVRFNU16aGFNRE14TVRBdkJnTlZCQU1UCktHdHpaWEoyWlMxM1pXSm9iMjlyTFhObGNuWmxjaTF6WlhKMmFXTmxMbXR6WlhKMlpTNXpkbU13Z2dFaU1BMEcKQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUUQ2cVNwaFlDZUp1cHBVTGdzSlhjcmx6MmE4bTlCZwozL0VrRWhUV1RrNXNTUXd0dThiYzlDQzViQ2k5UGNxb3hkWUdlbkdkN1cyWVJwak9SZWg0K0xVcFpoQzYvcWE4CnNPVGV6YzRWSU4yUFFkV2xDUjZDMGJMVGhnVGkvVFlsb1BUL3ZvSFd5aVVBYTNhL04xcnhPc2JaQnExWXdpSW4KNTY5WHdUNUM2OHJML25BdWFocXp0RmdveGVydys1T3p4ZWxmTWs3VWpXdFZScWVPZjBiRzNzWUQwYk9vY1dvdwpRODloZEQvQUFHSVFJbmFvWFJkMkJyNXMyNFNicWhmMVJHa0ZJZEZaRlNWRmZiek9SbHBDOGc1ZEVnRkNRR1V5CmJabkdMUmtpQ0dEUzY4S3VKbEJiRE5BUHNqZlN5TW9ndW5tejNyb0xCMDIrNXFMTDlpMXA3cEZkQWdNQkFBR2oKVlRCVE1BNEdBMVVkRHdFQi93UUVBd0lGb0RBTUJnTlZIUk1CQWY4RUFqQUFNRE1HQTFVZEVRUXNNQ3FDS0d0egpaWEoyWlMxM1pXSm9iMjlyTFhObGNuWmxjaTF6WlhKMmFXTmxMbXR6WlhKMlpTNXpkbU13RFFZSktvWklodmNOCkFRRUxCUUFEZ2dFQkFCdWJvRHd3TGZSbnhTOXppcVlhdWZTc01mTDNmQXVROGJKbXRSSHNDZFgzb3dNb2p4YVoKQUtsdFd5cERDWFdQK1phYVRvZE9UWi85MXg2WTZ1Nm5ZSSszWlVidWlhZ3JjOGhwMDZpUnJtODZnSFptS1QrYgpNUTZrMXlKcVpEU1J0eE05WmNrZ1lWVFA3cVh4MUt0bnFoUXhMa09MUkdYWHNKTHY5TU9JU1lQWlRxVUMzbWxqClhMVmhVYlk3YUMzSGwyYWJ2c3hNN2FxRHRnTndCVWJ5ME5XQzNVaHlnZ1ZCYVFWT1R2clFCUnRITnRUeERUSDEKblB3RHR0N2MrNmk0dW4walJVK2RsTlRKRXd3cE8ycFJiUkE3OXhOaWsxSFFYdUsrdTFYYktML1RqMm1tQnRTMApYcVAwb1g2cW8yVVk1bjFsd25ZT3FOdU9KdzFBRFpoTkt3WT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+    service:
+      name: kserve-webhook-server-service
+      namespace: kserve
+      path: /validate-serving-kserve-io-v1beta1-inferenceservice
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: inferenceservice.kserve-webhook-server.validator
+  namespaceSelector: {}
+  objectSelector: {}
+  rules:
+  - apiGroups:
+    - serving.kserve.io
+    apiVersions:
+    - v1beta1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - inferenceservices
+    scope: '*'
+  sideEffects: None
+  timeoutSeconds: 10
