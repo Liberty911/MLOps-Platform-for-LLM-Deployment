@@ -1,0 +1,95 @@
+apiVersion: ray.io/v1alpha1
+kind: RayCluster
+metadata:
+  name: ray-cluster
+  namespace: ray-cluster
+spec:
+  rayVersion: '2.8.0'
+  headGroupSpec:
+    rayStartParams:
+      dashboard-host: '0.0.0.0'
+      num-cpus: '4'
+      block: 'true'
+    template:
+      spec:
+        containers:
+          - name: ray-head
+            image: rayproject/ray:2.8.0-py310-gpu
+            ports:
+              - containerPort: 6379
+                name: gcs-server
+              - containerPort: 8265
+                name: dashboard
+              - containerPort: 10001
+                name: client
+            resources:
+              requests:
+                cpu: 2
+                memory: 4Gi
+              limits:
+                cpu: 4
+                memory: 8Gi
+            volumeMounts:
+              - name: models-storage
+                mountPath: /models
+              - name: wandb-secret
+                mountPath: /etc/wandb
+                readOnly: true
+        volumes:
+          - name: models-storage
+            persistentVolumeClaim:
+              claimName: models-storage
+          - name: wandb-secret
+            secret:
+              secretName: wandb-api-key
+  workerGroupSpecs:
+    - replicas: 2
+      minReplicas: 2
+      maxReplicas: 10
+      rayStartParams:
+          block: 'true'
+      groupName: cpu-workers
+      template:
+        spec:
+          containers:
+            - name: ray-worker
+              image: rayproject/ray:2.8.0-py310-cpu
+              resources:
+                requests:
+                  cpu: 2
+                  memory: 4Gi
+                limits:
+                  cpu: 4
+                  memory: 8Gi
+              volumeMounts:
+                - name: models-storage
+                  mountPath: /models
+    - replicas: 2
+      minReplicas: 1
+      maxReplicas: 5
+      rayStartParams:
+          block: 'true'
+      groupName: gpu-workers
+      template:
+        spec:
+          nodeSelector:
+            gpu: "true"
+          tolerations:
+            - key: "nvidia.com/gpu"
+              operator: "Exists"
+              effect: "NoSchedule"
+          containers:
+            - name: ray-worker
+              image: rayproject/ray:2.8.0-py310-gpu
+              resources:
+                requests:
+                  cpu: 4
+                  memory: 16Gi
+                  nvidia.com/gpu: 1
+                limits:
+                  cpu: 8
+                  memory: 32Gi
+                  nvidia.com/gpu: 1
+              volumeMounts:
+                - name: models-storage
+                  mountPath: /models

@@ -1,0 +1,16 @@
+# Secrets
+.env
+**/.env
+*.key
+*.pem
+*api*key*
+*token*
+
+# Terraform
+**/.terraform/
+*.tfstate*
+crash.log
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: triton-inference-server
+  namespace: model-serving
+  labels:
+    app: triton-inference
+    component: model-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: triton-inference
+  template:
+    metadata:
+      labels:
+        app: triton-inference
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8002"
+        prometheus.io/path: "/metrics"
+    spec:
+      nodeSelector:
+        gpu: "true"
+      tolerations:
+        - key: "nvidia.com/gpu"
+          operator: "Exists"
+          effect: "NoSchedule"
+      containers:
+        - name: triton
+          image: nvcr.io/nvidia/tritonserver:23.10-py3
+          ports:
+            - containerPort: 8000
+              name: http
+            - containerPort: 8001
+              name: grpc
+            - containerPort: 8002
+              name: metrics
+          env:
+            - name: CUDA_VISIBLE_DEVICES
+              value: "0"
+            - name: MODEL_REPOSITORY
+              value: "/models"
+            - name: TRITON_SERVER_GRPC_PORT
+              value: "8001"
+            - name: TRITON_SERVER_HTTP_PORT
+              value: "8000"
+            - name: TRITON_SERVER_METRICS_PORT
+              value: "8002"
+            - name: TRITON_SERVER_LOG_VERBOSE
+              value: "1"
+          volumeMounts:
+            - name: models-storage
+              mountPath: /models
+            - name: model-cache
+              mountPath: /tmp
+          resources:
+            requests:
+              cpu: "4"
+              memory: "16Gi"
+              nvidia.com/gpu: "1"
+            limits:
+              cpu: "8"
+              memory: "32Gi"
+              nvidia.com/gpu: "1"
+          livenessProbe:
+            httpGet:
+              path: /v2/health/live
+              port: 8000
+            initialDelaySeconds: 60
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /v2/health/ready
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 15
+      volumes:
+        - name: models-storage
+          persistentVolumeClaim:
+            claimName: models-storage
+        - name: model-cache
+          emptyDir: {}

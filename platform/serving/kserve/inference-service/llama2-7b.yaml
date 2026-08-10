@@ -1,0 +1,15 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: llama2-7b
+  namespace: model-serving
+spec:
+  predictor:
+    model:
+      modelFormat:
+        name: huggingface
+      runtime: kserve-tritonserver
+      storageUri: gs://kfserving-examples/models/torchserve/llama2
+      resources:
+        limits:
+          nvidia.com/gpu: 1

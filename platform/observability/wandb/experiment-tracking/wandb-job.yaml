@@ -1,0 +1,44 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: llm-fine-tuning-job
+  namespace: ray-cluster
+  annotations:
+    wandb.ai/project: "mlops-platform"
+    wandb.ai/tags: "llm,fine-tuning,production"
+spec:
+  template:
+    spec:
+      containers:
+        - name: fine-tuner
+          image: liberty911/llm-fine-tuner:latest
+          env:
+            - name: WANDB_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: wandb-api-key
+                  key: api-key
+            - name: MODEL_NAME
+              value: "llama2-7b"
+            - name: DATASET_PATH
+              value: "s3://mlops-platform-models-916697696148/datasets/fine-tuning/"
+            - name: OUTPUT_PATH
+              value: "s3://mlops-platform-models-916697696148/models/fine-tuned/"
+          resources:
+            requests:
+              cpu: "4"
+              memory: "16Gi"
+              nvidia.com/gpu: "1"
+            limits:
+              cpu: "8"
+              memory: "32Gi"
+              nvidia.com/gpu: "1"
+          volumeMounts:
+            - name: models-storage
+              mountPath: /models
+      restartPolicy: Never
+      volumes:
+        - name: models-storage
+          persistentVolumeClaim:
+            claimName: models-storage
+  backoffLimit: 2
